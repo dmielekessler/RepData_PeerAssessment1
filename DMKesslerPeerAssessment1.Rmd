@@ -35,7 +35,7 @@ For this part of the assignment, you can ignore the missing values in the datase
     them. Make a histogram of the total number of steps taken each day
     3. Calculate and report the mean and median of the total number of steps taken per day
 
-```{r mean_total_number_of_steps_taken_per_day}
+```{r mean_total_number_of_steps_taken_per_day, fig.keep="all", fig.show="asis"}
 #create dataframe total steps taken each day, including NA values
 totalsteps <- tapply(data$steps, data$date, sum)
 
@@ -58,7 +58,7 @@ The mean is `r datamean` the median is `r datamed`
     taken, averaged across all days (y-axis).
     2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
     
-``` {r What_is_the_average_daily_activity_pattern}
+``` {r What_is_the_average_daily_activity_pattern, fig.keep="all", fig.show="asis"}
 #create dataframe number of steps in each interval averaged (mean) across days
 avgsteps <-  data.frame(tapply(data$steps, data$interval, mean, na.rm = TRUE))
 avgsteps$interval <- rownames(avgsteps)
@@ -88,7 +88,7 @@ days may introduce bias into some calculations or summaries of the data.
     total number of steps taken per day. Do these values differ from the estimates from the first part of the 
     assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
-``` {r Imputing_missing_values}
+``` {r Imputing_missing_values, fig.keep="all", fig.show="asis"}
 #Calculate and report the total number of missing values ("NA"s) in the dataset
 summary(data)
 #Looking at the data, it appears that only "steps" has NA values
@@ -128,7 +128,7 @@ this part.
     2. Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the 
     average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in
     the GitHub repository to see an example of what this plot should look like using simulated data.
-``` {r Are there differences in activity patterns between weekdays and weekends}
+``` {r Are there differences in activity patterns between weekdays and weekends, fig.keep="all", fig.show="asis"}
 #add a day variable
 dataimp$day <- weekdays(dataimp$date)
 wend <- subset(dataimp, day %in% c("Saturday", "Sunday"))
